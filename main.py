@@ -5,7 +5,7 @@ import moderngl_window as mglw
 class Example(mglw.WindowConfig):
     gl_version = (3, 3)
     title = "ModernGL Example"
-    window_size = (1280, 720)
+    window_size = (1920, 1080)
     aspect_ratio = 16 / 9
     resizable = True
 
