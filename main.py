@@ -8,6 +8,7 @@ class Example(mglw.WindowConfig):
     window_size = (1920, 1080)
     aspect_ratio = 16 / 9
     resizable = True
+    fullscreen = True
 
 
 class SimpleColorTriangle(Example):
