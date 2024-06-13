@@ -3,12 +3,12 @@ import moderngl_window as mglw
 
 
 class Example(mglw.WindowConfig):
-    gl_version = (3, 3)
+    gl_version = (4, 1)
     title = "ModernGL Example"
     window_size = (1920, 1080)
     aspect_ratio = 16 / 9
     resizable = True
-    fullscreen = True
+    fullscreen = False
 
 
 class SimpleColorTriangle(Example):
@@ -68,7 +68,37 @@ class SimpleColorTriangle(Example):
     def render(self, time: float, frame_time: float):
         self.ctx.clear(0.0, 0.0, 0.0)
         self.vao.render()
+    def on_mouse_position_event(self, x, y, dx, dy):
+        self.mouse_position_event(x, y, dx, dy)
 
+    def on_mouse_drag_event(self, x, y, dx, dy):
+        self.mouse_drag_event(x, y, dx, dy)
+
+    def on_mouse_scroll_event(self, x_offset, y_offset):
+        self.mouse_scroll_event(x_offset, y_offset)
+
+    def on_mouse_press_event(self, x, y, button):
+        self.mouse_press_event(x, y, button)
+
+    def on_mouse_release_event(self, x, y, button):
+        self.mouse_release_event(x, y, button)
+
+    #defining mouse
+
+    def mouse_position_event(self, x, y, dx, dy):
+        print("Mouse position:", x, y, dx, dy)
+
+    def mouse_drag_event(self, x, y, dx, dy):
+        print("Mouse drag:", x, y, dx, dy)
+
+    def mouse_scroll_event(self, x_offset: float, y_offset: float):
+        print("Mouse wheel:", x_offset, y_offset)
+
+    def mouse_press_event(self, x, y, button):
+        print("Mouse button {} pressed at {}, {}".format(button, x, y))
+
+    def mouse_release_event(self, x: int, y: int, button: int):
+        print("Mouse button {} released at {}, {}".format(button, x, y))
 
 if __name__ == "__main__":
     SimpleColorTriangle.run()
